@@ -71,9 +71,9 @@ setw -g window-status-current-format "#[fg=colour24,bg=colour31,nobold,noundersc
 ```
 
 ## Todo
-[ ] Add better installer (homebrew?)
-[ ] Allow for priority
-[ ] Add sample configuration for tmux
+- [ ] Add better installer (homebrew?)
+- [ ] Allow for priority
+- [ ] Add sample configuration for tmux
 
 P.S: Pull request are welcome.. :)
 
