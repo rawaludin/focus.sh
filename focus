@@ -1,0 +1,45 @@
+#!/bin/sh
+list="todo.sh ls +focus | sed '\$d' | sed '\$d' | sort -k1.1,1.1"
+raw="$list | tail -1 | sed 's/.\{6\}$//'"
+id="$raw | grep -o '^\S*'"
+clean="$raw | sed 's/[^ ]* //'"
+done="todo.sh do `eval $id`"
+now="todo.sh add '${@:2} +focus'"
+
+usage="Usage:
+$(basename "$0")            : show current focus
+$(basename "$0") id         : show current todo.sh id
+$(basename "$0") now <text> : now new focus
+$(basename "$0") list       : list all focus
+$(basename "$0") done       : mark current focus as done"
+
+case $1 in
+  id)
+  eval $id
+  exit 1
+  ;;
+  now)
+  if [ -z "$2" ]
+    then
+      echo "$usage"
+      exit 1
+  fi
+  eval $now
+  exit 1
+  ;;
+  list)
+  eval $list
+  exit 1
+  ;;
+  done)
+  eval $done
+  exit 1
+  ;;
+  -h|help)
+  echo "$usage"
+  exit 1
+  ;;
+  *)
+  eval $clean
+  ;;
+esac
